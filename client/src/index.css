@@ -9,11 +9,11 @@ body{
 
 .note_scroll::-webkit-scrollbar,
 body::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 .note_scroll::-webkit-scrollbar-track {
-  background: #1d1d1d;
+  background: #121212;
 }
 
 body::-webkit-scrollbar-track{
@@ -22,6 +22,10 @@ body::-webkit-scrollbar-track{
 
 .note_scroll::-webkit-scrollbar-thumb,
 body::-webkit-scrollbar-thumb {
+  background: #121212;
+  border-radius: 4px;
+}
+
+.note_scroll::-webkit-scrollbar-thumb{
   background: #ffb72d;
-  border-radius: 3px;
 }
