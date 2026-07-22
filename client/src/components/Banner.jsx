@@ -2,7 +2,7 @@ import React from "react";
 
 const Banner = ({ onCreateClick }) => {
   return (
-    <section className="w-full max-w-7xl h-45 rounded-4xl mx-auto overflow-hidden flex flex-col justify-center items-center sticky top-5 shadow-2xl z-50">
+    <section className="w-full max-w-7xl h-45 rounded-4xl mx-auto overflow-hidden flex flex-col justify-center items-center sticky top-5 shadow-2xl z-80">
       <div className="bg-[#050505] w-full h-full absolute top-0 left-0 z-0"></div>
 
       <img
@@ -18,7 +18,7 @@ const Banner = ({ onCreateClick }) => {
 
       <button
         onClick={onCreateClick}
-        className="p-2.5 bg-[#121212] font-bold tracking-tight leading-tight text-white text-base rounded-md cursor-pointer select-none relative z-20 shadow-lg"
+        className="p-2.5 bg-[#121212] font-bold tracking-tight leading-tight text-white rounded-lg cursor-pointer select-none relative z-20 shadow-lg text-xl"
       >
         Create Note
       </button>

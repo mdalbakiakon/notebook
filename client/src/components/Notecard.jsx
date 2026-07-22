@@ -1,18 +1,33 @@
 import React from "react";
 import { FileXCorner, SquareArrowOutUpRight, Clock } from "lucide-react";
 
-const Notecard = ({ index, title, detail, created_at, onDelete }) => {
+const Notecard = ({
+  index,
+  title,
+  detail,
+  created_at,
+  onDelete,
+  onNoteOpen,
+}) => {
   return (
-    <div className="w-full h-50 bg-white/5 rounded-2xl p-2.5 relative flex flex-col justify-center items-center gap-0 tracking-tight leading-none overflow-hidden">
-
+    <div
+      onClick={onNoteOpen}
+      className="w-full h-50 bg-white/5 rounded-2xl p-2.5 relative flex flex-col justify-center items-center gap-0 tracking-tight leading-none overflow-hidden cursor-pointer hover:bg-white/3 group"
+    >
       {/* note delete button */}
-      <div className="bg-[#1e1e1e] p-2.5 absolute top-0 right-0 z-20 rounded-bl-2xl">
-        <FileXCorner onClick={() => onDelete(index)} className="w-6 h-6 text-white opacity-10 cursor-pointer hover:text-red-500 hover:opacity-100" />
-      </div>
+      <button type="button"
+        onClick={(e) => {
+          e.stopPropagation();
+          onDelete(index);
+        }}
+        className="bg-[#1e1e1e] p-2.5 absolute top-0 right-0 z-50 rounded-bl-2xl cursor-pointer"
+      >
+        <FileXCorner className="w-6 h-6 text-white opacity-10 hover:text-red-500 hover:opacity-100" />
+      </button>
 
       {/* note details */}
       <div className="flex-1 w-full h-full text-white/30 mt-1.5 p-0.5 rounded-lg overflow-hidden text-ellipsis relative mb-2.5">
-        <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(to_bottom,transparent_65%,#1e1e1e)] z-10"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(to_bottom,transparent_65%,#1e1e1e)] group-hover:bg-[linear-gradient(to_bottom,transparent_65%,#191919)] transition-colors duration-300 z-10"></div>
         {detail}
       </div>
 
@@ -22,7 +37,9 @@ const Notecard = ({ index, title, detail, created_at, onDelete }) => {
           {title}
         </div>
         {/* note creation date */}
-        <div className="self-start text-white/15 text-sm leading-tight">{created_at}</div>
+        <div className="self-start text-white/15 text-sm leading-tight">
+          {created_at}
+        </div>
       </div>
     </div>
   );
