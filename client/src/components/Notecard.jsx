@@ -22,7 +22,7 @@ const Notecard = ({
         }}
         className="bg-[#1e1e1e] p-2.5 absolute top-0 right-0 z-50 rounded-bl-2xl cursor-pointer"
       >
-        <FileXCorner className="w-6 h-6 text-white opacity-10 hover:text-red-500 hover:opacity-100" />
+        <FileXCorner className="w-6 h-6 text-white/10 hover:text-red-500 hover:opacity-100" />
       </button>
 
       {/* note details */}

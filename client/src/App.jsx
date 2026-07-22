@@ -57,6 +57,24 @@ const App = () => {
     setNoteList(updatedList);
   };
 
+  const handleTrashDelete = (id) => {
+    const updatedTrashList = trashList.filter((elem, idx) => idx !== id);
+    setTrashList(updatedTrashList);
+  };
+
+  const handleTrashRecycle = (id) => {
+    const recycleItem = trashList[id];
+    handleTrashDelete(id);
+    const newNoteList = [...noteList];
+    newNoteList.push(recycleItem);
+    setNoteList(newNoteList);
+  };
+
+  const handleTrashRecycleAll = () => {
+    setNoteList([...noteList, ...trashList]);
+    clearTrash();
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (title.length === 0) {
@@ -109,6 +127,10 @@ const App = () => {
     document.body.style.overflow = "hidden";
   };
 
+  const clearTrash = () => {
+    setTrashList([]);
+  };
+
   return (
     <>
       <header>
@@ -153,7 +175,15 @@ const App = () => {
         <Noteopen isNoteOpen={isNoteOpen} onNoteClose={onNoteClose} />
 
         {/* trash open */}
-        <Trashopen isTrashOpen={isTrashOpen} onTrashClose={onTrashClose} />
+        <Trashopen
+          isTrashOpen={isTrashOpen}
+          onTrashClose={onTrashClose}
+          trashList={trashList}
+          clearTrash={clearTrash}
+          handleTrashDelete={handleTrashDelete}
+          handleTrashRecycle={handleTrashRecycle}
+          handleTrashRecycleAll={handleTrashRecycleAll}
+        />
 
         {/* footer */}
         <Footer />
