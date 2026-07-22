@@ -1,0 +1,27 @@
+@import 'tailwindcss';
+
+body{
+  position: relative;
+  font-family: "Outfit", sans-serif;
+  color: white;
+}
+
+
+.note_scroll::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.note_scroll::-webkit-scrollbar-track {
+  background: #1d1d1d;
+}
+
+body::-webkit-scrollbar-track{
+  background: #050505;
+}
+
+.note_scroll::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background: #ffb72d;
+  border-radius: 3px;
+}
