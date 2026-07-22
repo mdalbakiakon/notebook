@@ -14,7 +14,7 @@ const Notecontainer = ({
       {noteList.length === 0 ? (
         <div className="w-full flex-1 flex flex-col justify-center items-center gap-2.5 relative">
           <img src="/ghost.svg" alt="" className="h-1/3" />
-          <p className="select-none text-lg font-semibold text-white/10">
+          <p className="select-none text-lg font-semibold text-[#1e1e1e]">
             Notebook is Empty!
           </p>
 
