@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 
 const App = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [error, setError] = useState("");
 
   // saving into local storage so every refresh don't clear out the notebook notes
   const [noteList, setNoteList] = useState(() => {
@@ -24,6 +25,38 @@ const App = () => {
   const handleDelete = (id) => {
     const updatedList = noteList.filter((elem, idx) => idx !== id);
     setNoteList(updatedList);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (title.length === 0) {
+      setError("Please enter a title for your note");
+      return;
+    }
+    setError("");
+    const newList = [...noteList];
+    const created_at = new Date().toLocaleString("en-US", {
+      month: "short",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    newList.push({ title: title.trim(), detail: detail.trim(), created_at });
+    setNoteList(newList);
+    setTitle("");
+    setDetail("");
+  };
+
+  const errorClose = () => {
+    setError("");
+  };
+
+  const onFormClose = () => {
+    setIsFormOpen(false);
+    setTitle("");
+    setDetail("");
+    setError("");
+    document.body.style.overflow = "auto";
   };
 
   return (
@@ -47,28 +80,14 @@ const App = () => {
         {/* form */}
         <Noteform
           isFormOpen={isFormOpen}
-          onCloseClick={() => {
-            setIsFormOpen(false);
-            document.body.style.overflow = "auto";
-          }}
+          onFormClose={onFormClose}
           title={title}
           detail={detail}
+          error={error}
           onTitleChange={(e) => setTitle(e.target.value)}
           onDetailChange={(e) => setDetail(e.target.value)}
-          handleSubmit={(e) => {
-            e.preventDefault();
-            const newList = [...noteList];
-            const created_at = new Date().toLocaleString("en-US", {
-              month: "short",
-              day: "numeric",
-              hour: "2-digit",
-              minute: "2-digit",
-            });
-            newList.push({ title, detail, created_at });
-            setNoteList(newList);
-            setTitle("");
-            setDetail("");
-          }}
+          handleSubmit={handleSubmit}
+          errorClose={errorClose}
         />
 
         {/* footer */}

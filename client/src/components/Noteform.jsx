@@ -3,12 +3,14 @@ import { X } from "lucide-react";
 
 const Noteform = ({
   isFormOpen,
-  onCloseClick,
+  onFormClose,
   title,
   detail,
+  error,
   onTitleChange,
   onDetailChange,
   handleSubmit,
+  errorClose
 }) => {
   return (
     <section
@@ -27,7 +29,7 @@ const Noteform = ({
             />
             <button
               type="button"
-              onClick={onCloseClick}
+              onClick={onFormClose}
               className="absolute h-full top-0 right-0 cursor-pointer"
             >
               <X strokeWidth={3} className="w-7.5 h-7.5 hover:text-[#ffb72d]" />
@@ -38,8 +40,13 @@ const Noteform = ({
             value={title}
             onChange={onTitleChange}
             placeholder="Enter Title"
-            className="w-full p-2.5 rounded-lg placeholder:text-white/15 bg-[#121212] outline-none"
+            className={`w-full p-2.5 rounded-lg placeholder:text-white/15 bg-[#121212] outline-none ${error ? "border-2 border-red-500" : ""}`}
           />
+          
+          {error && <div className="fixed bottom-2.5 right-2.5 bg-red-500 text-white font-semibold p-2.5 rounded-lg z-50 flex justify-center items-center gap-1 text-sm">{error}
+          <div onClick={errorClose}><X strokeWidth={3} className="w-5 cursor-pointer"/></div>
+          </div>}
+          
           <textarea
             placeholder="Type your note here..."
             value={detail}
