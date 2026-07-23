@@ -11,7 +11,7 @@ const Notecard = ({
 }) => {
   return (
     <div
-      onClick={onNoteOpen}
+      onClick={() => onNoteOpen(index)}
       className="w-full h-50 bg-white/5 rounded-2xl p-2.5 relative flex flex-col justify-center items-center gap-0 tracking-tight leading-none overflow-hidden cursor-pointer hover:bg-white/3 group"
     >
       {/* note delete button */}
@@ -26,7 +26,7 @@ const Notecard = ({
       </button>
 
       {/* note details */}
-      <div className="flex-1 w-full h-full text-white/30 mt-1.5 p-0.5 rounded-lg overflow-hidden text-ellipsis relative mb-2.5">
+      <div className="flex-1 w-full h-full text-white/25 mt-1.5 p-0.5 rounded-lg overflow-hidden text-ellipsis relative mb-2.5 whitespace-pre-wrap">
         <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(to_bottom,transparent_65%,#1e1e1e)] group-hover:bg-[linear-gradient(to_bottom,transparent_65%,#191919)] transition-colors duration-300 z-10"></div>
         {detail}
       </div>

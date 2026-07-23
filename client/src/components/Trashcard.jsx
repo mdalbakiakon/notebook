@@ -19,7 +19,7 @@ const Trashcard = ({
           </span>
         </div>
 
-        <div className="line-clamp-1 overflow-hidden truncate self-start text-white/30 leading-tight w-1/2 min-w-0">
+        <div className="line-clamp-1 overflow-hidden truncate self-start text-white/25 leading-tight w-1/2 min-w-0">
           {detail}
         </div>
       </div>

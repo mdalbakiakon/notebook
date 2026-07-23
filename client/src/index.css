@@ -24,6 +24,7 @@ body::-webkit-scrollbar-track{
 body::-webkit-scrollbar-thumb {
   background: #121212;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .note_scroll::-webkit-scrollbar-thumb{

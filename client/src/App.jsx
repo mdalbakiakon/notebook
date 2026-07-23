@@ -11,7 +11,13 @@ const App = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isNoteOpen, setIsNoteOpen] = useState(false);
   const [isTrashOpen, setIsTrashOpen] = useState(false);
+  const [activeNoteId, setActiveNoteId] = useState(null);
+  const [activeNoteTitle, setActiveNoteTitle] = useState("");
+  const [activeNoteDetail, setActiveNoteDetail] = useState("");
+  const [activeNoteCreateAt, setActiveNoteCreatedAt] = useState("");
   const [error, setError] = useState("");
+  const [successMsg, setSuccessMsg] = useState("");
+  const [isNoteDirty, setIsNoteDirty] = useState(false);
 
   // saving into local storage so every refresh don't clear out the notebook notes
   const [noteList, setNoteList] = useState(() => {
@@ -34,6 +40,13 @@ const App = () => {
   useEffect(() => {
     localStorage.setItem("notebook+_trash", JSON.stringify(trashList));
   }, [trashList]);
+
+  useEffect(() => {
+    if (successMsg) {
+      const timer = setTimeout(() => setSuccessMsg(""), 3500);
+      return () => clearTimeout(timer);
+    }
+  }, [successMsg]);
 
   const handleDelete = (id) => {
     const deleted_at = new Date().toLocaleString("en-US", {
@@ -99,6 +112,10 @@ const App = () => {
     setError("");
   };
 
+  const successClose = () => {
+    setSuccessMsg("");
+  };
+
   const onFormClose = () => {
     setIsFormOpen(false);
     setTitle("");
@@ -109,12 +126,46 @@ const App = () => {
 
   const onNoteClose = () => {
     setIsNoteOpen(false);
+    setActiveNoteId(null);
+    setError("");
+    setIsNoteDirty(false);
     document.body.style.overflow = "auto";
   };
 
-  const onNoteOpen = () => {
+  const onNoteOpen = (id) => {
+    setActiveNoteId(id);
+    setActiveNoteTitle(noteList[id].title);
+    setActiveNoteDetail(noteList[id].detail);
+    setActiveNoteCreatedAt(noteList[id].created_at);
     setIsNoteOpen(true);
+    setIsNoteDirty(false);
     document.body.style.overflow = "hidden";
+  };
+
+  // updates the note in place, keeping the original created_at
+  const handleUpdateNote = () => {
+    if (activeNoteId === null) return;
+    if (activeNoteTitle.trim().length === 0) {
+      setError("Please enter a title for your note");
+      return;
+    }
+    setError("");
+    const updatedList = [...noteList];
+    updatedList[activeNoteId] = {
+      ...updatedList[activeNoteId],
+      title: activeNoteTitle.trim(),
+      detail: activeNoteDetail.trim(),
+    };
+    setNoteList(updatedList);
+    setIsNoteDirty(false);
+    setSuccessMsg("Note updated successfully");
+  };
+
+  // deletes the currently open note (reuses your existing trash logic) and closes the modal
+  const handleDeleteActiveNote = () => {
+    if (activeNoteId === null) return;
+    handleDelete(activeNoteId);
+    onNoteClose();
   };
 
   const onTrashClose = () => {
@@ -172,7 +223,29 @@ const App = () => {
         />
 
         {/* note open */}
-        <Noteopen isNoteOpen={isNoteOpen} onNoteClose={onNoteClose} />
+        <Noteopen
+          isNoteOpen={isNoteOpen}
+          onNoteClose={onNoteClose}
+          title={activeNoteTitle}
+          detail={activeNoteDetail}
+          created_at={activeNoteCreateAt}
+          onTitleChange={(e) => {
+            setError("");
+            setActiveNoteTitle(e.target.value);
+            setIsNoteDirty(true);
+          }}
+          onDetailChange={(e) => {
+            setActiveNoteDetail(e.target.value);
+            setIsNoteDirty(true);
+          }}
+          onSave={handleUpdateNote}
+          onDelete={handleDeleteActiveNote}
+          error={error}
+          errorClose={errorClose}
+          isDirty={isNoteDirty}
+          success={successMsg}
+          successClose={successClose}
+        />
 
         {/* trash open */}
         <Trashopen
