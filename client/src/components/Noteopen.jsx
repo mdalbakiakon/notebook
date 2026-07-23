@@ -26,7 +26,7 @@ const Noteopen = ({
         <img
           src="/logo.svg"
           alt="notebook+ logo"
-          className="w-15 mx-auto my-5"
+          className="w-15 mx-auto my-5 select-none"
         />
 
         {/* note close btn */}
@@ -41,16 +41,16 @@ const Noteopen = ({
           />
         </button>
 
-        <div className="w-full flex-1 min-h-0 flex flex-col justify-center items-center gap-2.5 rounded-b-4xl">
-          <div className="w-full p-2.5 flex justify-between items-center gap-2.5 bg-white/5 rounded-2xl hover:bg-white/3">
-            <div className="w-full flex flex-col justify-between items-start gap-2.5">
+        <div className="w-full flex-1 min-h-0 flex flex-col lg:flex-row justify-center items-center lg:items-start gap-2.5 rounded-b-4xl">
+          <div className="w-full lg:w-1/3 p-2.5 flex flex-col justify-between items-start gap-5 bg-white/5 rounded-2xl hover:bg-white/3">
+            <div className="w-full flex flex-col justify-between items-start">
               <input
                 type="text"
                 value={title}
                 onChange={onTitleChange}
-                className={`text-[#ffb72d] text-3xl w-1/3 leading-none bg-transparent outline-none border-b-2 truncate ${error ? "border-red-500" : "border-transparent"}`}
+                className={`text-[#ffb72d] text-2xl md:text-3xl w-full tracking-tight leading-none bg-transparent outline-none border-b-2 truncate ${error ? "border-red-500" : "border-transparent"}`}
               />
-              <div className="self-start text-white/15 text-lg leading-tight">
+              <div className="self-start text-white/15 text-base md:text-lg leading-tight">
                 Created at: {created_at}
               </div>
             </div>
@@ -74,14 +74,14 @@ const Noteopen = ({
             )}
 
             {/* update and close btn */}
-            <div className="flex justify-center items-center gap-2.5">
+            <div className="flex justify-center items-center gap-1.5 md:gap-2.5">
               <button type="button" onClick={onSave}>
                 <Save
-                  className={`bg-[#1e1e1e] hover:text-[#ffb72d] hover:opacity-100 rounded-full cursor-pointer aspect-square  w-11 h-11 p-2.5 ${isDirty ? "text-[yellowgreen]" : "text-white/10"}`}
+                  className={`bg-[#1e1e1e] hover:text-[#ffb72d] hover:opacity-100 rounded-full cursor-pointer aspect-square  w-9 h-9 p-1.5  md:w-11 md:h-11 md:p-2.5 ${isDirty ? "text-[yellowgreen]" : "text-white/10"}`}
                 />
               </button>
               <button type="button" onClick={onDelete}>
-                <Trash className="bg-[#1e1e1e] hover:text-red-500 hover:opacity-100 text-white/10 rounded-full cursor-pointer w-11 h-11 p-2.5" />
+                <Trash className="bg-[#1e1e1e] hover:text-red-500 hover:opacity-100 text-white/10 rounded-full cursor-pointer w-9 h-9 p-1.5 md:w-11 md:h-11 md:p-2.5" />
               </button>
             </div>
           </div>
@@ -90,7 +90,7 @@ const Noteopen = ({
           <textarea
             value={detail}
             onChange={onDetailChange}
-            className="w-full h-full note_scroll overflow-auto text-xl whitespace-pre-wrap p-7.5 bg-transparent outline-none border-none resize-none"
+            className="w-full h-full note_scroll overflow-auto text-lg md:text-xl whitespace-pre-wrap p-7.5 rounded-4xl  lg:rounded-tl-2xl outline-none border-none resize-none bg-white/5"
           />
         </div>
       </div>

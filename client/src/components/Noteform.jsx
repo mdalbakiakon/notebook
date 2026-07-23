@@ -21,7 +21,7 @@ const Noteform = ({
         <img
           src="/logo.svg"
           alt="notebook+ logo"
-          className="w-15 mx-auto my-5"
+          className="w-15 mx-auto my-5 select-none"
         />
 
         <button

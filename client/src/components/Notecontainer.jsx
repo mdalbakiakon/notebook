@@ -13,7 +13,7 @@ const Notecontainer = ({
     <section className="w-full max-w-7xl mx-auto bg-white/5 flex-1 rounded-4xl tracking-tight leading-none p-2.5 flex">
       {noteList.length === 0 ? (
         <div className="w-full flex-1 flex flex-col justify-center items-center gap-2.5 relative">
-          <img src="/ghost.svg" alt="" className="h-1/3" />
+          <img src="/ghost.svg" alt="" className="h-1/3 select select-none" />
           <p className="select-none text-lg font-semibold text-[#1e1e1e]">
             Notebook is Empty!
           </p>
@@ -21,14 +21,17 @@ const Notecontainer = ({
           {trashList.length > 0 && (
             <button
               onClick={onTrashOpen}
-              className="absolute top-2.5 right-0 p-2.5 font-semibold text-white/15 hover:bg-white/3 bg-white/5 flex justify-center items-center gap-1 text-lg tracking-tight leading-tight rounded-lg cursor-pointer"
+              className="absolute top-0 right-0 bg-white/5 hover:bg-white/2.5 rounded-full cursor-pointer"
             >
-              <p className="hidden sm:flex">
-                Trash {"("}
-                {trashList.length}
-                {")"}
-              </p>
-              <Trash className="w-4.5 h-4.5 sm:w-6 sm:h-6 text-white opacity-10" />
+              <div className="relative w-fit h-fit">
+                <Trash className="w-9 h-9 p-1.5 md:w-11 md:h-11 md:p-2.5 rounded-full sm:rounded-lg text-white/15" />
+
+                <span
+                  className={`absolute top-0.5 right-0.5 flex items-center justify-center min-w-4.5 h-4.5 px-1 bg-[#ffb72d] rounded-full text-black text-[10px] font-bold leading-none tracking-tight shadow-sm ${trashList.length === 0 ? "hidden" : ""}`}
+                >
+                  {trashList.length}
+                </span>
+              </div>
             </button>
           )}
         </div>
@@ -42,14 +45,17 @@ const Notecontainer = ({
             {/* trash btn */}
             <button
               onClick={onTrashOpen}
-              className="absolute top-2.5 right-0 p-2.5 font-semibold text-white/15 hover:bg-white/3 bg-white/5 flex justify-center items-center gap-1 text-lg tracking-tight leading-tight rounded-lg cursor-pointer"
+              className="absolute top-0 right-0 bg-white/5 hover:bg-white/2.5 rounded-full cursor-pointer"
             >
-              <p className="hidden sm:flex">
-                Trash {"("}
-                {trashList.length}
-                {")"}
-              </p>
-              <Trash className="w-4.5 h-4.5 sm:w-6 sm:h-6 text-white opacity-10" />
+              <div className="relative w-fit h-fit">
+                <Trash className="w-9 h-9 p-1.5 md:w-11 md:h-11 md:p-2.5 rounded-full sm:rounded-lg text-white/15" />
+
+                <span
+                  className={`absolute top-0.5 right-0.5 flex items-center justify-center min-w-4.5 h-4.5 px-1 bg-[#ffb72d] rounded-full text-black text-[10px] font-bold leading-none tracking-tight shadow-sm ${trashList.length === 0 ? "hidden" : ""}`}
+                >
+                  {trashList.length}
+                </span>
+              </div>
             </button>
           </div>
 
