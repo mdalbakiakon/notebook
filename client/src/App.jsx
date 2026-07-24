@@ -48,7 +48,6 @@ const App = () => {
     }
   }, [successMsg]);
 
-
   const handleDelete = (id) => {
     const deleted_at = new Date().toLocaleString("en-US", {
       month: "short",
@@ -259,7 +258,7 @@ const App = () => {
           handleTrashRecycleAll={handleTrashRecycleAll}
         />
 
-        {/* footer */}
+        {/* copyright */}
         <Footer />
       </main>
     </>
