@@ -1,7 +1,3 @@
-<div align="center">
-  <img src="screenshots/logo.svg" alt="Notebook+ Logo" width="120" />
-</div>
-
 # Notebook+
 
 A modern, lightweight note-taking application built with React and Tailwind CSS.
