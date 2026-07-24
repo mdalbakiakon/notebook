@@ -19,8 +19,10 @@ const Banner = ({ onCreateClick }) => {
 
       <div className="w-full h-full rounded-4xl flex flex-col justify-center items-center backdrop-blur-3xl shadow-2xl relative overflow-hidden">
         <img
-          src="/silk.jpg"
-          alt=""
+          src="/banner.webp"
+          alt="banner_image"
+          fetchPriority="high"
+          loading="eager"
           className="w-full h-full absolute top-0 left-0 object-bottom-right sm:object-bottom object-cover"
         />
 

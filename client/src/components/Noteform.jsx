@@ -64,7 +64,7 @@ const Noteform = ({
           />
           <button
             type="submit"
-            className="bg-(--accent-col) font-bold text-black p-2.5 rounded-lg cursor-pointer my-2.5"
+            className="bg-(--accent-col) font-bold text-(--txt-headline-col) p-2.5 rounded-lg cursor-pointer my-2.5"
           >
             Add Note
           </button>

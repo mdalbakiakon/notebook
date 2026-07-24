@@ -13,7 +13,7 @@ const Notecontainer = ({
     <section className="w-full max-w-7xl mx-auto bg-(--bg-cont-col) flex-1 rounded-4xl tracking-tight leading-none p-2.5 flex">
       {noteList.length === 0 ? (
         <div className="w-full flex-1 flex flex-col justify-center items-center gap-2.5 relative">
-          <img src="/ghost.svg" alt="" className="h-1/3 select select-none" />
+          <img src="/ghost.svg" alt="ghost_image" className="h-1/3 select select-none" />
           <p className="select-none text-lg font-semibold text-(--txt-headline-col)">
             Notebook is Empty!
           </p>

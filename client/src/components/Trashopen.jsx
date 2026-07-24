@@ -38,7 +38,7 @@ const Trashopen = ({
         <div className="w-full flex-1 min-h-0 rounded-b-4xl flex flex-col justify-center items-center">
           {trashList.length === 0 ? (
             <div className="w-full flex-1 flex flex-col justify-center items-center gap-2.5">
-              <img src="/ghost.svg" alt="" className="h-1/3 select-none" />
+              <img src="/ghost.svg" alt="ghost_image" className="h-1/3 select-none" />
               <p className="select-none text-lg font-semibold text-(--txt-headline-col)">
                 Trash is Empty!
               </p>
