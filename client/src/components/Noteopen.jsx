@@ -20,9 +20,9 @@ const Noteopen = ({
 }) => {
   return (
     <section
-      className={`w-full h-dvh tracking-tight leading-none bg-[#050505]/50 backdrop-blur-xs text-lg z-50 fixed top-0 left-0 justify-center items-center ${isNoteOpen ? "flex" : "hidden"} p-5 z-90`}
+      className={`w-full h-dvh tracking-tight leading-none backdrop-blur-xs text-lg z-50 fixed top-0 left-0 justify-center items-center ${isNoteOpen ? "flex" : "hidden"} p-5 z-90`}
     >
-      <div className="w-full max-w-5xl h-4/5 bg-[linear-gradient(30deg,#050505_70%,#151515)] p-2.5 rounded-4xl shadow-2xl relative flex flex-col justify-center items-center gap-2.5">
+      <div className="w-full max-w-5xl h-4/5 bg-[linear-gradient(-30deg,var(--bg-main-col)_70%,var(--bg-ter-col))] p-2.5 rounded-4xl shadow-2xl relative flex flex-col justify-center items-center gap-2.5">
         <img
           src="/logo.svg"
           alt="notebook+ logo"
@@ -37,20 +37,20 @@ const Noteopen = ({
         >
           <X
             strokeWidth={3}
-            className="w-7.5 h-7.5 text-[#2a2a2a] hover:text-[#ffb72d]"
+            className="w-7.5 h-7.5 text-(--txt-sec-col) hover:text-(--accent-col)"
           />
         </button>
 
         <div className="w-full flex-1 min-h-0 flex flex-col lg:flex-row justify-center items-center lg:items-start gap-2.5 rounded-b-4xl">
-          <div className="w-full lg:w-1/3 p-2.5 flex flex-col justify-between items-start gap-5 bg-white/5 rounded-2xl hover:bg-white/3">
+          <div className="w-full lg:w-1/3 p-2.5 flex flex-col justify-between items-start gap-5 bg-(--bg-ter-col) hover:bg-(--bg-sec-col) rounded-2xl">
             <div className="w-full flex flex-col justify-between items-start">
               <input
                 type="text"
                 value={title}
                 onChange={onTitleChange}
-                className={`text-[#ffb72d] text-2xl md:text-3xl w-full tracking-tight leading-none bg-transparent outline-none border-b-2 truncate ${error ? "border-red-500" : "border-transparent"}`}
+                className={`text-(--accent-col) text-2xl md:text-3xl w-full tracking-tight leading-none bg-transparent outline-none border-b-2 truncate ${error ? "border-red-500" : "border-transparent"}`}
               />
-              <div className="self-start text-white/15 text-base md:text-lg leading-tight">
+              <div className="self-start text-(--txt-sec-col) text-sm md:text-base leading-tight">
                 Created at: {created_at}
               </div>
             </div>
@@ -77,11 +77,11 @@ const Noteopen = ({
             <div className="flex justify-center items-center gap-1.5 md:gap-2.5">
               <button type="button" onClick={onSave}>
                 <Save
-                  className={`bg-[#1e1e1e] hover:text-[#ffb72d] hover:opacity-100 rounded-full cursor-pointer aspect-square  w-9 h-9 p-1.5  md:w-11 md:h-11 md:p-2.5 ${isDirty ? "text-[yellowgreen]" : "text-white/10"}`}
+                  className={`bg-(--bg-sec-col) hover:text-(--accent-col) hover:opacity-100 rounded-full cursor-pointer aspect-square  w-9 h-9 p-1.5  md:w-11 md:h-11 md:p-2.5 ${isDirty ? "text-[yellowgreen]" : "text-(--txt-sec-col)"}`}
                 />
               </button>
               <button type="button" onClick={onDelete}>
-                <Trash className="bg-[#1e1e1e] hover:text-red-500 hover:opacity-100 text-white/10 rounded-full cursor-pointer w-9 h-9 p-1.5 md:w-11 md:h-11 md:p-2.5" />
+                <Trash className="bg-(--bg-sec-col) hover:text-red-500 hover:opacity-100 text-(--txt-sec-col) rounded-full cursor-pointer w-9 h-9 p-1.5 md:w-11 md:h-11 md:p-2.5" />
               </button>
             </div>
           </div>
@@ -90,7 +90,7 @@ const Noteopen = ({
           <textarea
             value={detail}
             onChange={onDetailChange}
-            className="w-full h-full note_scroll overflow-auto text-lg md:text-xl whitespace-pre-wrap p-7.5 rounded-4xl  lg:rounded-tl-2xl outline-none border-none resize-none bg-white/5"
+            className="w-full h-full note_scroll overflow-auto text-lg md:text-xl whitespace-pre-wrap p-7.5 rounded-4xl text-(--txt-headline-col) lg:rounded-tl-2xl outline-none border-none resize-none bg-(--accent-col)"
           />
         </div>
       </div>

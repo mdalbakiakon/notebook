@@ -48,6 +48,7 @@ const App = () => {
     }
   }, [successMsg]);
 
+
   const handleDelete = (id) => {
     const deleted_at = new Date().toLocaleString("en-US", {
       month: "short",
@@ -188,7 +189,7 @@ const App = () => {
         <Navbar />
       </header>
 
-      <main className="w-full min-h-dvh bg-[linear-gradient(30deg,#050505_70%,#151515)] pt-33.5 lg:pt-40 p-5 flex flex-col justify-center items-center gap-5">
+      <main className="w-full min-h-dvh bg-[linear-gradient(30deg,var(--bg-main-col)_70%,var(--bg-ter-col))] pt-33.5 lg:pt-40 p-5 flex flex-col justify-center items-center gap-5">
         {/* banner */}
         <Banner
           onCreateClick={() => {
