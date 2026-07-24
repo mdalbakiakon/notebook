@@ -16,6 +16,7 @@ const Notecard = ({
     >
       {/* note delete button */}
       <button
+        aria-label="delete note"
         type="button"
         onClick={(e) => {
           e.stopPropagation();

@@ -24,6 +24,7 @@ const Trashopen = ({
         />
 
         <button
+          aria-label="trash close button"
           type="button"
           onClick={onTrashClose}
           className="absolute top-5 right-5 cursor-pointer z-50"
@@ -38,7 +39,11 @@ const Trashopen = ({
         <div className="w-full flex-1 min-h-0 rounded-b-4xl flex flex-col justify-center items-center">
           {trashList.length === 0 ? (
             <div className="w-full flex-1 flex flex-col justify-center items-center gap-2.5">
-              <img src="/ghost.svg" alt="ghost_image" className="h-1/3 select-none" />
+              <img
+                src="/ghost.svg"
+                alt="ghost_image"
+                className="h-1/3 select-none"
+              />
               <p className="select-none text-lg font-semibold text-(--txt-headline-col)">
                 Trash is Empty!
               </p>
@@ -47,12 +52,16 @@ const Trashopen = ({
             <div className="w-full flex-1 min-h-0 flex flex-col justify-center items-center gap-5">
               <div className="flex justify-center items-center gap-2.5 self-start">
                 <button
+                  aria-label="recycle all button"
+                  type="button"
                   onClick={handleTrashRecycleAll}
                   className="p-2.5 text-(--txt-sec-col) text-base md:text-lg hover:bg-(--bg-sec-col) bg-(--bg-ter-col) hover:text-white font-semibold tracking-tight leading-tight rounded-lg cursor-pointer select-none relative z-20 shadow-lg self-start"
                 >
                   Recycle all
                 </button>
                 <button
+                  aria-label="delete all button"
+                  type="button"
                   onClick={clearTrash}
                   className="p-2.5 bg-(--accent-col) text-base md:text-lg hover:bg-red-500 hover:text-white font-semibold tracking-tight leading-tight text-black rounded-lg cursor-pointer select-none relative z-20 shadow-lg self-start"
                 >

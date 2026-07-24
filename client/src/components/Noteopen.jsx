@@ -31,6 +31,7 @@ const Noteopen = ({
 
         {/* note close btn */}
         <button
+          aria-label="note close button"
           type="button"
           onClick={onNoteClose}
           className="absolute top-5 right-5 cursor-pointer z-50"
